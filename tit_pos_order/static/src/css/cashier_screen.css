@@ -18,13 +18,14 @@
 
 
 .ticket-button {
-    background-color: #00BFFF;
+    background-color: #bbced5;
     color:#000000;
-
+    margin: 4px;
     display: flex;
     align-items: center;
     padding: 0 15px;
     font-size: medium;
+    border-radius : 22px;
 }
 
 .ticket_cmd_attente {
@@ -38,12 +39,13 @@
 }
 
 .ticket_cmd_vendeur {
-    background-color: #00BFFF;
+    background-color: #bbced5;
     color:#000000;
-
+    margin: 4px;
     display: flex;
     align-items: center;
     padding: 0 15px;
     font-size: medium;
+    border-radius : 22px;
 }
 

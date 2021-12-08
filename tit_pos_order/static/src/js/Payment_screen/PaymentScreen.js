@@ -8,6 +8,8 @@ odoo.define('tit_pos_order.PaymentScreenButton', function(require) {
     const Registries = require('point_of_sale.Registries');
     const PaymentScreen = require('point_of_sale.PaymentScreen');
     var rpc = require('web.rpc');
+    var ks_models = require('point_of_sale.models');
+
     const CustomButtonPaymentScreen = (PaymentScreen) =>
     class extends PaymentScreen {
         constructor() {
@@ -280,6 +282,7 @@ odoo.define('tit_pos_order.PaymentScreenButton', function(require) {
                             }
                             else if (selected_option == 20){
                                 //ie c'est un acompte d'un SO avec montant fixe
+
                                 var self = this;
                                 var commande_ancienne = 0;
                                 commande_ancienne = order.commande_id
@@ -318,7 +321,7 @@ odoo.define('tit_pos_order.PaymentScreenButton', function(require) {
                                 });
                             }
                         else {
-                                //ie c'est une commande normale
+                            //ie c'est une commande normale
                             var commande_ancienne = 0;
                             commande_ancienne = order.commande_id
                             // remove pending payments before finalizing the validation
@@ -462,6 +465,7 @@ odoo.define('tit_pos_order.PaymentScreenButton', function(require) {
                             }
                             var self = this;
                             await this._finalizeValidation();
+                            var done = $.Deferred();
                             rpc.query({
                                 model: 'pos.order',
                                 method: 'fill_commande_principale',
@@ -479,18 +483,17 @@ odoo.define('tit_pos_order.PaymentScreenButton', function(require) {
                                     }).then(function (factures_non_payees){
                                         self.env.pos.factures_non_payees = factures_non_payees;
                                         rpc.query({
-                                            model: 'res.partner',
-                                            method: 'search_read',
-                                            args: [[], [ 'property_account_position_id', 'company_type', 'child_ids', 'type', 'website', 'siren_company', 'nic_company','credit_limit', 'avoir_client']],
+                                        model: 'res.partner',
+                                        method: 'search_read',
+                                        args: [[], [ 'property_account_position_id', 'company_type', 'child_ids', 'type', 'website', 'siren_company', 'nic_company','credit_limit', 'avoir_client']],
                                         }).then(function (partner_result){
                                             self.env.pos.partner = partner_result;
-
                                             self.env.pos.delete_current_order();
                                             self.reload_cmd_vendeur(commande_ancienne);
                                         });
                                         });
+                                        });
                                 });
-                            });
                             }
                             this.reload_cmd_vendeur(commande_ancienne);
                     } 

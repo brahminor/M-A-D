@@ -39,7 +39,7 @@ odoo.define('tit_pos_cmd_facture.retour_button', function(require) {
                         {
                             pv_nouv = parse.float(payload);
                             if(pv_nouv <= prix_principale){
-                                order.get_selected_orderline().set_discount(100 - (pv_nouv*100)/prix_principale)      
+                                order.get_selected_orderline().set_discount((100 - (pv_nouv*100)/prix_principale).toFixed(2))    
                             }
                             else{
                                 self.showPopup('ErrorPopup', {

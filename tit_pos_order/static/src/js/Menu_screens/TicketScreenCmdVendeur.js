@@ -226,9 +226,10 @@ const PosComponent = require('point_of_sale.PosComponent');
             };
         }
         get _searchFields() {
-            const { Customer } = this.getSearchFieldNames();
+            const { Customer, Name } = this.getSearchFieldNames();
             var fields = {
                 [Customer]: (commandes) => commandes.partner_id[1],
+                [Name]: (commandes) => commandes.name,
             };
             return fields;
         }
@@ -253,7 +254,8 @@ const PosComponent = require('point_of_sale.PosComponent');
                 pour faire le filtre
             */
             return {
-                Customer: this.env._t('client'),
+                Customer: this.env._t('Client'),
+                Name: this.env._t('Commande'),
             };
         }
     }
