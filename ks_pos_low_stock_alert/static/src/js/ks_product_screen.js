@@ -8,7 +8,7 @@ odoo.define('ks_pos_low_stock_alert.ks_product_screen', function (require) {
     const KsProductScreen = require('point_of_sale.ProductScreen');
     const ks_utils = require('ks_pos_low_stock_alert.utils');
     const Registries = require('point_of_sale.Registries');
-
+    var _t = require('web.core')._t;
     const ks_product_screen = (KsProductScreen) =>
         class extends KsProductScreen {
             _onClickPay() {
