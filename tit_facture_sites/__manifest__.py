@@ -18,7 +18,6 @@
         'security/ir.model.access.csv',
         'views/factures_sites_view.xml',
     ],
-    'images': ['static/description/images/icon.png'],
     "auto_install": False,
     "installable": True,
     "application": False, 
