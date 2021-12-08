@@ -14,6 +14,6 @@
     "data": ["views/web_notify.xml"],
     "demo": ["views/res_users_demo.xml"],
     "installable": True,
-    'application': False,
+    'application': True,
     'auto_install': False,
 }
