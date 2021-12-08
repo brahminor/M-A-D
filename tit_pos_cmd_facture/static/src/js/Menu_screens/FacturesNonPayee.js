@@ -175,9 +175,10 @@ odoo.define('tit_pos_cmd_facture.FacturesNonPayee', function (require) {
             };
         }
         get _searchFields() {
-            const { Customer } = this.getSearchFieldNames();
+            const { Customer,Name} = this.getSearchFieldNames();
             var fields = {
                 [Customer]: (factures_non_payees) => factures_non_payees.partner_id[1],
+                [Name]: (factures_non_payees) => factures_non_payees.name,
             };
             return fields;
         }
@@ -199,7 +200,8 @@ odoo.define('tit_pos_cmd_facture.FacturesNonPayee', function (require) {
         getSearchFieldNames() {
            
             return {
-                Customer: this.env._t('client'),
+                Customer: this.env._t('Client'),
+                Name : this.env._t('Facture'),
             };
         }
 

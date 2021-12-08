@@ -9,7 +9,7 @@
                             <span class="back_text">Fermer</span>
                         </button>
                     </div>
-                    <t t-set="placeholder">Recherche Facture ...</t>
+                    <t t-set="placeholder">Recherche ...</t>
                     <SearchBar config="searchBarConfig" placeholder="placeholder" />
                 </div>
                 <div class="orders">

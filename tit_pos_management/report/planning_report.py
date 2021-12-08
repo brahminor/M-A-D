@@ -29,7 +29,7 @@ class PlanningXlsx(models.AbstractModel):
 
         bls = {}
         if planning == 'p_t_chauffeur':
-            val_planning = 'Planning tournée chauffeur'
+            val_planning = 'Planning tournée des chauffeurs'
             if chauffeur:
                 bls=self.env['stock.picking'].search([
                 ('scheduled_date', '>=' ,date_debut),
@@ -48,7 +48,7 @@ class PlanningXlsx(models.AbstractModel):
                 planning_choix = 'Chauffeur'
 
         elif planning == 'p_t_transporteur':
-            val_planning = 'Planning tournée transporteurs'
+            val_planning = 'Planning tournée des transporteurs'
             if transporteur:
                 bls=self.env['stock.picking'].search([
                 ('scheduled_date', '>=' ,date_debut),
@@ -67,7 +67,7 @@ class PlanningXlsx(models.AbstractModel):
                 planning_choix = 'Transporteur'
 
         elif planning == 'p_p_commande':
-            val_planning ='Planning Préparateur de commande'
+            val_planning ='Planning des préparateurs des commandes'
             if preparateur:
                 planning_choix = 'Préparateur '
                 bls=self.env['stock.picking'].search([
@@ -101,12 +101,14 @@ class PlanningXlsx(models.AbstractModel):
         sheet_situation.set_column('B:B', 40)
         sheet_situation.set_column('C:C', 40)
         sheet_situation.set_column('D:D', 40)
-        sheet_situation.merge_range('A2:L2', ''+ val_planning +' du : '+ str(date_debut)+ ' jusqu au : '+ str(date_fin), heading_format2)
+        dat_d_formate = datetime.strftime(date_debut, '%d/%m/%Y')
+        dat_f_formate = datetime.strftime(date_fin, '%d/%m/%Y')
+        sheet_situation.merge_range('A2:D2', ''+ val_planning +' du : '+ str(dat_d_formate)+ ' jusqu\'au : '+ str(dat_f_formate), heading_format2)
         sheet_situation.merge_range('A4:A4', planning_choix, border_format)
         sheet_situation.write(4,0,planning_choix,border_format)
         sheet_situation.write(4,1,"Référence du BL",border_format)
         sheet_situation.write(4,2,"Date prévue",border_format)
-        sheet_situation.write(4,3,"Date effectué",border_format)
+        sheet_situation.write(4,3,"Date éffective",border_format)
         row = 5
         colun = 0
         if len(bls) > 0 :
@@ -117,7 +119,10 @@ class PlanningXlsx(models.AbstractModel):
                     sheet_situation.write(row,colun,str(obj.transporteur.name),lot_body)
                 elif planning == 'p_p_commande':
                     sheet_situation.write(row,colun,str(obj.preparateur.name),lot_body)
-                sheet_situation.write(row,colun+1,str(obj.name),lot_body)
-                sheet_situation.write(row,colun+2,str(obj.scheduled_date),lot_body)
-                sheet_situation.write(row,colun+3,str(obj.date_done),lot_body)
+                sheet_situation.write(row,colun+1, str(obj.name), lot_body)
+                sheet_situation.write(row,colun+2, str(datetime.strftime(obj.scheduled_date, '%d/%m/%Y')), lot_body)
+                if obj.date_done:
+                    sheet_situation.write(row,colun+3, str(datetime.strftime(obj.date_done, '%d/%m/%Y')), lot_body)
+                else:
+                    sheet_situation.write(row,colun+3, "", lot_body)
                 row +=1  

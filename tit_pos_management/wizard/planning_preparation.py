@@ -8,8 +8,8 @@ class planning_preparation(models.TransientModel):
     _name = "planning.preparation_wizard"
     _description = "Wizard de planning de préparation"
 
-    date_debut = fields.Date(string = 'Date debut')
-    date_fin = fields.Date(string = 'Date fin')
+    date_debut = fields.Date(string = 'Date debut', required = True)
+    date_fin = fields.Date(string = 'Date fin' , required = True)
     planning = fields.Selection([
         ('p_t_chauffeur', 'Planning tournée chauffeur'),
         ('p_t_transporteur', 'Planning tournée transporteurs'),

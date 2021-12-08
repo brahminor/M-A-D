@@ -5,26 +5,20 @@
         <div class="ticket-screen screen">
             <div class="screen-content">
                 <div class="controls">
-
                     <div class="buttons">
-                        <button class="button back" t-on-click="show_new_screeen()">
+                        <button class="button back" style="border-radius:22px" t-on-click="show_new_screeen()">
                             <span class="back_text">Fermer</span>
                         </button>
-
-                        <button class="button paiement" style="right:100%; background-color: #32CD32;"  t-on-click="click_paiement()">
+                        <button class="button paiement" style="right:100%; background-color: #43996E; color:white; border-radius:22px;"  t-on-click="click_paiement()">
                             <span class="back_text">Paiement multiple</span>
                             <i class="fa fa-angle-double-right fa-fw"></i>
                         </button>
-                         
                     </div>
                     <t t-set="placeholder">Recherche Facture ...</t>
                     <SearchBar config="searchBarConfig" placeholder="placeholder" />
-
                 </div>
                 <div class="orders">
-
                      <div class="orders">
-
                     <div class="header-row">
                         <div class="col start wide">#</div>
                         <div class="col start wide">Numéro</div>
@@ -36,7 +30,6 @@
                         <div class="col start wide">Total à payer</div> 
                         <div class="col start wide">Reste à payer</div>
                         <div class="col start wide">#</div> 
-
                     </div>
                     <t t-foreach="factures_non_payeesFiltre" t-as="cmd" t-key="cmd.cid" >
                         <div class="order-row pointer" >
@@ -60,7 +53,7 @@
                             </div>
                             <!-- colorer la colonne selon état du paiement de la facture -->
                             <t t-if="get_payment_state_chifre(cmd) == 'not_paid'">
-                                <div class="col start wide"  style="font-weight:bold; color: #F08080">
+                                <div class="col start wide"  style="font-weight:bold; color: #ef5858">
                                     <t t-esc="get_payment_state(cmd)"/>
                                 </div>
                             </t>
@@ -75,12 +68,11 @@
                                 </div>
                             </t>
                             <t t-else="">
-                                <div class="col start wide" style="font-weight:bold; color: #9ACD32">
+                                <div class="col start wide" style="font-weight:bold; color: #43996E">
                                     <t t-esc="get_payment_state(cmd)"/>
                                 </div>
                             </t>
                             <!-- fin de  colorer la colonne selon état du paiement de la facture -->
-
                             <div class="col start wide">
                                  <t t-esc="cmd.amount_total.toFixed(2)"/>
                             </div>
@@ -88,7 +80,7 @@
                                  <t t-esc="cmd.amount_residual.toFixed(2)"/>
                             </div> 
                             <div class="col start wide">
-                                <button class='button button_details'  style="right:100%; background-color: #00BFFF;" title="details" t-on-click="selectFacture_for_details(cmd)">
+                                <button class='button button_details'  style="right:100%; background-color: #bbced5; border-radius:22px;" title="details" t-on-click="selectFacture_for_details(cmd)">
                                    Détails
                                 </button>
                             </div>
@@ -96,7 +88,9 @@
                     </t>
                 </div>
             </div>
-        </div></div></t>
+        </div>
+    </div>
+</t>
 </templates>
 
 

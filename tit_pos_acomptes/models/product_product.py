@@ -7,8 +7,11 @@ class product_product(models.Model):
 
 	@api.model
 	def get_product_acompte(self):
-		#cette fonstion permet de retourner id du produit acompte crée depuis le data
-		related_model_id = self.env.ref('tit_pos_acomptes.article_acompte_pos').id
-		if related_model_id :
-			return related_model_id
+		#cette fonstion permet de retourner id du produit acompte paramétré dans la config de vente
+		res_config_record = self.env['res.config.settings'].search([])
+		if res_config_record:
+			if not res_config_record.deposit_default_product_id:
+				raise ValidationError(_("Veuillez configurer le produit acompte dans la partie du vente"))
+			else:
+				return res_config_record.deposit_default_product_id[0].id
 		return 0

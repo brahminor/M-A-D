@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from odoo import models, fields, api, _
 
 class stock_picking(models.Model):
@@ -7,4 +6,4 @@ class stock_picking(models.Model):
 
     preparateur = fields.Many2one('hr.employee', string = "Préparateur")
     chauffeur = fields.Many2one('hr.employee', string = "Chauffeur")
-    transporteur = fields.Many2one('hr.employee', string = "Transporteur")
+    transporteur = fields.Many2one('pos.transporteur', string = "Transporteur")

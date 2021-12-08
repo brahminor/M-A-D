@@ -28,15 +28,17 @@ class product_template(models.Model):
         return res
 
     def product_seuil_notif(self):
-        # Fonction qui permet de déclancher le lancement du message à l'utilisateur 
-        # pour lui indiquer qu'il y'a des produit qui sont arrivés au seuil
+        """Fonction qui permet de déclancher le lancement du message à l'utilisateur 
+        pour lui indiquer qu'il y'a des produit qui sont arrivés au seuil
+        """
+        users = self.env['res.users'].search([])
         id_s = self.env['product.template'].search([])
         for move in id_s:
             if move.active:
                 if move.qty_available <= move.seuil_alerte:
                     move.write({'dateAlerte' : datetime.now()})
                     description = move.name +" est arrivé(e) au seuil d'alerte"
-                    if  not move.isAlerte:  
+                    if  not move.isAlerte:
                         message_id = self.env['mail.message'].create({          
                             'email_from': self.env.user.partner_id.email, 
                             'author_id': self.env.user.partner_id.id, 
@@ -50,6 +52,9 @@ class product_template(models.Model):
                             'needaction' : True,
                             'need_moderation': True,
                                 })
+                        for i in users:
+                            # Afficher la notification
+                            i.notify_info(message='Vous avez des articles à réapprovisionner')
                         move.write({'isAlerte' : True ,'state_qty': 'reapprovisionner'})
         return True
 

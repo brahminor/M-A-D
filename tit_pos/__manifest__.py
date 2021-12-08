@@ -15,6 +15,7 @@
     "description": """
     """,
     "data": [
+        'data/res_partner.xml',
         'security/ir.model.access.csv',
         'templates/point_of_sale_assets.xml',
         'views/accountFiscalPosition_view.xml'

@@ -160,9 +160,9 @@ class account_move(models.Model):
                 pay=self.env['account.payment.register'].with_context({'active_id': invoice_id,'active_ids': factures_a_payer,'active_model': 'account.move'}).create(payment_record)
                 
                 pay.action_create_payments()
+                
                 return 1
         return 0
-
 
     @api.model
     def get_amount_total(self, facture_ids):

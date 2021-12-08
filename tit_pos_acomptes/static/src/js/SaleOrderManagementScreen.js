@@ -189,9 +189,10 @@ odoo.define('tit_pos_acomptes.SaleOrderManagementScreen', function (require) {
         }
         get _searchFields() {
             //cette fonction est associée à la zone de recherche
-            const { Customer } = this.getSearchFieldNames();
+            const { Customer , Name} = this.getSearchFieldNames();
             var fields = {
                 [Customer]: (sale_orders) => sale_orders.partner_id[1],
+                [Name]: (sale_orders) => sale_orders.name,
             };
             return fields;
         }
@@ -216,7 +217,8 @@ odoo.define('tit_pos_acomptes.SaleOrderManagementScreen', function (require) {
         getSearchFieldNames() {
             //cette fonction retourne le client saisi sur la zone de recherche
             return {
-                Customer: this.env._t('client'),
+                Customer: this.env._t('Client'),
+                Name: this.env._t('Commande'),
             };
         }
         /*

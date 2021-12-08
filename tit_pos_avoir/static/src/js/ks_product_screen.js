@@ -4,6 +4,7 @@ odoo.define('tit_pos_avoir.ks_product_screen', function (require) {
     const ks_utils = require('ks_pos_low_stock_alert.utils');
     const Registries = require('point_of_sale.Registries');
     var rpc = require('web.rpc');
+    var _t = require('web.core')._t;
     const ks_product_screen = (KsProductScreen) =>
         class extends KsProductScreen {
             _onClickPay() {

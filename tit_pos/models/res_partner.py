@@ -6,6 +6,8 @@ from datetime import date
 class res_partner(models.Model):
     _inherit = "res.partner"
     
+    ref = fields.Char(default=lambda self: self.env['ir.sequence'].next_by_code('res.partner'))
+    
     @api.model
     def _get_property_account_position_id(self):
         """

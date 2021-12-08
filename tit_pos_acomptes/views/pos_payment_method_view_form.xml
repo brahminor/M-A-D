@@ -8,6 +8,7 @@
             <xpath expr="//field[@name='cash_journal_id']" position="attributes">
                 <attribute name="attrs">{'invisible': [('is_cash_count', 'in', ['True', 'False'])], 'required': [('is_cash_count', '=', True)]}</attribute>
                 <attribute name="domain">[('type', 'in', ['cash', 'bank', 'avoir_type'])]</attribute>
+                <attribute name="string">Journal</attribute>
             </xpath> 
         </field>
     </record>

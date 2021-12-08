@@ -6,7 +6,7 @@
     "author": "Sogesi",
     "website": "http://www.sogesi-dz.com",
     "sequence": 0,
-    "depends": ["account", "point_of_sale", 'product', 'purchase', 'mail', 'stock', 'hr', 'report_xlsx', 'tit_pos_order'],
+    "depends": ["account", "point_of_sale", 'product', 'purchase', 'mail', 'stock', 'hr', 'report_xlsx', 'tit_pos_order','web_notify'],
     "description": """
 	""",
     "data": [
@@ -20,7 +20,9 @@
             "views/res_partner_views.xml",
             "views/product_template_views.xml",
             "views/stock_picking.xml"
-
     ],
+    'qweb': [
+            "static/src/xml/pos.xml",
+        ],
     "installable": True,
 }

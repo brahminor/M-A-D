@@ -39,7 +39,7 @@ odoo.define('tit_pos_avoir.FactureDetails_factPaye', function (require) {
                 contents.find(".button_brouillon_fact_btn").removeClass('oe_hidden');
                 contents.find(".button_confirm_fact_btn").addClass('oe_hidden');
                 $('.edit_client_a_selectionner').attr("style", "pointer-events: none;");
-                contents.find(".button_enreg_paiement_btn").removeClass('oe_hidden');
+                contents.find(".button_enreg_paiement_btn").addClass('oe_hidden');
             }
         }
         captureChange(event) {

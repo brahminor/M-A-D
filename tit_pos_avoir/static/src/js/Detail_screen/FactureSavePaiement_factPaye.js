@@ -27,6 +27,7 @@ odoo.define('tit_pos_avoir.FactureSavePaiement_factPaye', function (require) {
             //cette fonction permet de capturer les changements sur la facture avoir client
                 this.changes[event.target.name] = event.target.value;  
         }
+        
         get_ref_client(facture_id){
             /*
             Cette fonction permet de récupérer la ref de la facture et la remplire

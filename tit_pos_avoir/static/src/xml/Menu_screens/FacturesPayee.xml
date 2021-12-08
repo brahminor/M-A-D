@@ -9,7 +9,7 @@
                             <span class="back_text">Fermer</span>
                         </button> 
                     </div>
-                    <t t-set="placeholder">Recherche Facture ...</t>
+                    <t t-set="placeholder">Recherche...</t>
                     <SearchBar config="searchBarConfig" placeholder="placeholder" />
                 </div>
                 <div class="orders">
@@ -47,7 +47,7 @@
                             </div>
                             <!-- colorer la colonne selon état du paiement de la facture -->
                             <t t-if="get_payment_state_chifre(cmd) == 'not_paid'">
-                                <div class="col start wide"  style="font-weight:bold; color: #F08080">
+                                <div class="col start wide"  style="font-weight:bold; color: #ef5858">
                                     <t t-esc="get_payment_state(cmd)"/>
                                 </div>
                             </t>
@@ -62,7 +62,7 @@
                                 </div>
                             </t>
                             <t t-else="">
-                                <div class="col start wide" style="font-weight:bold; color: #9ACD32">
+                                <div class="col start wide" style="font-weight:bold; color: #43996E">
                                     <t t-esc="get_payment_state(cmd)"/>
                                 </div>
                             </t>
@@ -72,7 +72,7 @@
                                  <t t-esc="cmd.amount_total.toFixed(2)"/>
                             </div>
                             <div class="col start wide">
-                                <button class='button button_details'  style="right:100%; background-color: #00BFFF;" title="details" t-on-click="selectFacture_for_details(cmd)">
+                                <button class='button button_details'  style="right:100%; background-color: #bbced5; border-radius:22px;"  title="details" t-on-click="selectFacture_for_details(cmd)">
                                    Détails
                                 </button>
                             </div>
