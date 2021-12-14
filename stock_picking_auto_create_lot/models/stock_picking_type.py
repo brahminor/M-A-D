@@ -6,4 +6,4 @@ from odoo import fields, models
 class StockPickingType(models.Model):
     _inherit = "stock.picking.type"
 
-    auto_create_lot = fields.Boolean(string="Auto Create Lot", default = True)
+    auto_create_lot = fields.Boolean(string="Auto Create Lot", default = True, help = "Ce champ permet de confirmer la création automatique du num de lot")
