@@ -42,7 +42,7 @@
                                 <span class="label">date de facturation :</span>
                             </td>
                             <td style=" padding-bottom: 1em;">
-                                <input class="detail mntnt" name="montant_du" t-att-value="getDate(props.facture_selected) || ''" readonly="1" style="font-size: 22px; border:none;"/>
+                                <input class="detail mntnt" id="date_facturation_t" name="montant_du" t-att-value="getDate(props.facture_selected) || ''" readonly="1" style="font-size: 22px; border:none;"/>
                             </td>
                         </tr>
                         <tr>
@@ -73,9 +73,16 @@
                             <td style=" padding-bottom: 1em;">
                               <span class="label">Montant total facture:</span>
                             </td>
-                            <td style=" padding-bottom: 1em;">
-                                <input class="detail mntnt" id="montant_total" name="montant_total" t-att-value="props.facture_selected.amount_total.toFixed(2) || '0'" readonly="1" style="font-size: 22px; border:none; "/>
-                            </td>
+                            <t t-if="props.facture_selected.sale_order_id">
+                                 <td style=" padding-bottom: 1em;">
+                                    <input class="detail mntnt" id="montant_total" name="montant_total" t-att-value="props.facture_selected.sale_order_amount_total.toFixed(2) || '0'" readonly="1" style="font-size: 22px; border:none; "/>
+                                </td>
+                            </t>
+                            <t t-else="">
+                                <td style=" padding-bottom: 1em;">
+                                    <input class="detail mntnt" id="montant_total" name="montant_total" t-att-value="props.facture_selected.amount_total.toFixed(2) || '0'" readonly="1" style="font-size: 22px; border:none; "/>
+                                </td>
+                            </t>
                         </tr>
                         <tr>
                             <td style=" padding-bottom: 1em;">
@@ -90,7 +97,7 @@
                                <span class="label">Client  :</span>
                             </td>
                             <td style=" padding-bottom: 1em; color: #43996E">
-                            <select class='detail needsclick' name='client_recuperes_id' t-on-change="captureChange" style="color: #43996E; font-size: 22px; border:none;">
+                            <select class='detail needsclick' id="client_recuperes_id" name='client_recuperes_id' t-on-change="captureChange" style="color: #43996E; font-size: 22px; border:none;">
                             <t t-foreach='env.pos.client_recuperes' t-as='client_recuperes' t-key="client_recuperes.id">
                                 <option t-att-value='client_recuperes.id'
                                     t-att-selected="props.facture_selected.partner_id ? 

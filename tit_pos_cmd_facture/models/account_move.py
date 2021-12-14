@@ -44,7 +44,7 @@ class account_move(models.Model):
         """
         record = self.env['account.move'].browse(id_fac)
         if record:
-            return record.name
+            return [record.name, record.invoice_date]
         return ''
 
     @api.model

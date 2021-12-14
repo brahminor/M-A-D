@@ -69,7 +69,8 @@ odoo.define('tit_pos_cmd_facture.FactureSavePaiement', function (require) {
                 method: 'get_ref_facture',
                 args: [facture_id]
             }).then(function (u) {
-                $("#ref_fact").val(u);
+                $("#ref_fact").val(u[0]);
+                $("#date_facturation_t").val(moment(u[1]).format('DD/MM/YYYY'));
             });
         }
         get_name_client(factures_non_payees){

@@ -75,7 +75,7 @@
                                <span class="label">Client  :</span>
                         </td>
                         <td style=" padding-bottom: 1em; color: #43996E">
-                            <select class='detail needsclick' name='client_recuperes_id' t-on-change="captureChange" style="color: blue; font-size: 22px; ">
+                            <select class='detail needsclick' id="client_recuperes_id" name='client_recuperes_id' t-on-change="captureChange" style="color: blue; font-size: 22px; ">
                             <t t-foreach='env.pos.client_recuperes' t-as='client_recuperes' t-key="client_recuperes.id">
                                 <option t-att-value='client_recuperes.id'
                                     t-att-selected="props.facture_selected.partner_id ? 

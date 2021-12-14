@@ -31,14 +31,14 @@ odoo.define('tit_pos_avoir.FactureDetails_factPaye', function (require) {
                 // si état = brouillon -->  mettre que  le bouton confirmer visible 
                 contents.find(".button_brouillon_fact_btn").addClass('oe_hidden');
                 contents.find(".button_confirm_fact_btn").removeClass('oe_hidden');
-                contents.find(".edit_client_a_selectionner").removeClass('oe_hidden');
+                contents.find(".client_recuperes_id").removeClass('oe_hidden');
                 contents.find(".button_enreg_paiement_btn").addClass('oe_hidden');  
             }
             else{
                 //si état = comptabilisé -->  mettre que  le bouton confirmer invisible
                 contents.find(".button_brouillon_fact_btn").removeClass('oe_hidden');
                 contents.find(".button_confirm_fact_btn").addClass('oe_hidden');
-                $('.edit_client_a_selectionner').attr("style", "pointer-events: none;");
+                $("#client_recuperes_id").attr("style", "pointer-events: none;");
                 contents.find(".button_enreg_paiement_btn").addClass('oe_hidden');
             }
         }
@@ -154,7 +154,8 @@ odoo.define('tit_pos_avoir.FactureDetails_factPaye', function (require) {
                             args: [facture_id]
                         }).then(function (u) {
                         //actualisation de la liste des factures non payées ou partiellement payées
-                        $("#ref_fact").val(u);
+                        $("#ref_fact").val(u[0]);
+                        $("#date_facturation_t").val(moment(u[1]).format('DD/MM/YYYY'));
                         rpc.query({
                             model: 'account.move',
                             method: 'search_read',
@@ -172,7 +173,7 @@ odoo.define('tit_pos_avoir.FactureDetails_factPaye', function (require) {
                             contents.find(".button_brouillon_fact_btn").removeClass('oe_hidden');
                             contents.find(".button_confirm_fact_btn").addClass('oe_hidden');
                             contents.find(".button_enreg_paiement_btn").removeClass('oe_hidden');
-                            $('.edit_client_a_selectionner').attr("style", "pointer-events: none;");
+                            $("#client_recuperes_id").attr("style", "pointer-events: none;");
                             $("#statut_fact").val("Comptabilisé");
                         });
                     });
@@ -194,7 +195,8 @@ odoo.define('tit_pos_avoir.FactureDetails_factPaye', function (require) {
                             args: [facture_id]
                         }).then(function (u) {
                         //actualisation de la liste des factures non payées ou partiellement payées
-                        $("#ref_fact").val(u);
+                        $("#ref_fact").val(u[0]);
+                        $("#date_facturation_t").val(moment(u[1]).format('DD/MM/YYYY'));
                         //actualisation de la liste des factures non payées ou partiellement payées
                         rpc.query({
                             model: 'account.move',
@@ -209,7 +211,7 @@ odoo.define('tit_pos_avoir.FactureDetails_factPaye', function (require) {
                             contents.find(".button_brouillon_fact_btn").addClass('oe_hidden');
                             contents.find(".button_confirm_fact_btn").removeClass('oe_hidden');
                             contents.find(".button_enreg_paiement_btn").addClass('oe_hidden');
-                            $('.edit_client_a_selectionner').attr("style", "pointer-events: all;");
+                            $("#client_recuperes_id").attr("style", "pointer-events: all;");
                             $("#statut_fact").val("Brouillon");
                             $("#etat_paiement").val("Non payée");
                             $("#amount_residual").val($("#montant_total").val());

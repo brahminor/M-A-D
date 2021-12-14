@@ -41,14 +41,7 @@
                                 <input class="detail client_selectionne" id="avoir_client_a" name="client_recuperes_avoir" t-att-value="get_avoir_client(props.facture_selected)" readonly="1" style="font-size: 22px;  color:RED; border:none;"/>
                             </td>
                         </tr>
-                        <tr>
-                            <td style=" padding-bottom: 1em;">
-                                <span class="label">Montant total facture :</span>
-                            </td>
-                            <td style=" padding-bottom: 1em; ">
-                                <input class="detail mntnt" id="montant_total" name="montant_total" t-att-value="get_amount_total(props.facture_selected.id)" readonly="1" style="font-size: 22px; border:none;"/>
-                            </td>
-                        </tr>
+                        
                         <tr>
                             <td style=" padding-bottom: 1em;">
                                 <span class="label">Montant dû :</span>

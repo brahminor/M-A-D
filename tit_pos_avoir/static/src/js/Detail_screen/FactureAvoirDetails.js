@@ -31,14 +31,14 @@ odoo.define('tit_pos_avoir.FactureAvoirDetails', function (require) {
                 // si état = brouillon -->  mettre que  le bouton confirmer visible 
                 contents.find(".button_brouillon_fact_btn").addClass('oe_hidden');
                 contents.find(".button_confirm_fact_btn").removeClass('oe_hidden');
-                contents.find(".edit_client_a_selectionner").removeClass('oe_hidden');
+                contents.find(".client_recuperes_id").removeClass('oe_hidden');
                 contents.find(".button_enreg_paiement_btn").addClass('oe_hidden');  
             }
             else{
                 //si état = comptabilisé -->  mettre que  le bouton confirmer invisible
                 contents.find(".button_brouillon_fact_btn").removeClass('oe_hidden');
                 contents.find(".button_confirm_fact_btn").addClass('oe_hidden');
-                $('.edit_client_a_selectionner').attr("style", "pointer-events: none;");
+                $("#client_recuperes_id").attr("style", "pointer-events: none;");
                 contents.find(".button_enreg_paiement_btn").removeClass('oe_hidden');
             }
         }
