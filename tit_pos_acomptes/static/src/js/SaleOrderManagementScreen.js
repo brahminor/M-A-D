@@ -112,6 +112,8 @@ odoo.define('tit_pos_acomptes.SaleOrderManagementScreen', function (require) {
                             self.env.pos.set_order(order);
                             var product = self.env.pos.db.get_product_by_id(id_produit_acompte)
                             order.add_product(product,{quantity : 1, price : down_payment, discount : 0})
+                            self.env.pos.delete_current_order();
+                            self.env.pos.set_order(order); 
                         } 
                     })
                 }
@@ -147,6 +149,8 @@ odoo.define('tit_pos_acomptes.SaleOrderManagementScreen', function (require) {
                             self.env.pos.set_order(order);          
                             var product = self.env.pos.db.get_product_by_id(id_produit_acompte)
                             order.add_product(product,{quantity : 1, price : down_payment, discount : 0})
+                            self.env.pos.delete_current_order();
+                            self.env.pos.set_order(order);
                         } 
                     })
                 }
