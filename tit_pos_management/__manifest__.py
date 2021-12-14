@@ -6,7 +6,7 @@
     "author": "Sogesi",
     "website": "http://www.sogesi-dz.com",
     "sequence": 0,
-    "depends": ["account", "point_of_sale", 'product', 'purchase', 'mail', 'stock', 'hr', 'report_xlsx', 'tit_pos_order','web_notify'],
+    "depends": ["account", "point_of_sale", 'product', 'purchase', 'mail', 'stock', 'hr', 'report_xlsx', 'tit_pos_order', 'web_notify', 'stock_picking_auto_create_lot'],
     "description": """
 	""",
     "data": [

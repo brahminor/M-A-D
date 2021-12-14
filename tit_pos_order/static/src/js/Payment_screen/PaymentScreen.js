@@ -356,8 +356,6 @@ odoo.define('tit_pos_order.PaymentScreenButton', function(require) {
                                         
                                         }).then(function (partner_result){
                                             self.env.pos.partner = partner_result;
-
-                                            self.env.pos.delete_current_order();
                                             self.reload_cmd_vendeur(commande_ancienne);
                                         });
                                     });});
@@ -438,6 +436,7 @@ odoo.define('tit_pos_order.PaymentScreenButton', function(require) {
                                             });
                                         }
                                         else if (u == (-3)){
+                                            self.env.pos.delete_current_order();
                                             self.show_new_screeen();
                                             Gui.showPopup("ValidationCommandeSucces", {
                                                title : self.env._t("Le paiement d'acompte est enregistré avec succès"),

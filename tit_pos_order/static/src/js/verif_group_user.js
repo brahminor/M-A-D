@@ -39,8 +39,8 @@ odoo.define('tit_pos_order.verif_group_user', function (require) {
                         //caissier
                         var contents = $('.pos-content');
                         contents.find(".ctrl_btnFactNonPaye").show();//factures non payées
-                        contents.find(".ctrl_btnFactPaye").hide();//factures payées
-                        contents.find(".ctrl_btnFactPayeavoir").hide();//factures avoir client
+                        contents.find(".ctrl_btnFactPaye").show();//factures payées
+                        contents.find(".ctrl_btnFactPayeavoir").show();//factures avoir client
                         contents.find(".ctrl_btnValiderCmd").hide();//valider la commande
                         contents.find(".set-customer").show();//choisir client
                         contents.find(".pay").show();//paiement
@@ -57,8 +57,8 @@ odoo.define('tit_pos_order.verif_group_user', function (require) {
                         //comptable
                         var contents = $('.pos-content');
                         contents.find(".ctrl_btnFactNonPaye").show();//factures non payées
-                        contents.find(".ctrl_btnFactPaye").hide();//factures payées
-                        contents.find(".ctrl_btnFactPayeavoir").hide();//factures avoir client
+                        contents.find(".ctrl_btnFactPaye").show();//factures payées
+                        contents.find(".ctrl_btnFactPayeavoir").show();//factures avoir client
                         contents.find(".ctrl_btnValiderCmd").hide();//valider la commande
                         contents.find(".set-customer").show();//choisir client
                         contents.find(".pay").show();//paiement

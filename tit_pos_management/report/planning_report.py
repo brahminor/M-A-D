@@ -108,7 +108,7 @@ class PlanningXlsx(models.AbstractModel):
         sheet_situation.write(4,0,planning_choix,border_format)
         sheet_situation.write(4,1,"Référence du BL",border_format)
         sheet_situation.write(4,2,"Date prévue",border_format)
-        sheet_situation.write(4,3,"Date éffective",border_format)
+        sheet_situation.write(4,3,"Date effective",border_format)
         row = 5
         colun = 0
         if len(bls) > 0 :

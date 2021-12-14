@@ -106,7 +106,6 @@ const PosComponent = require('point_of_sale.PosComponent');
             redirection vers la page de saisie de cmd mais vide sans ajout d'une nvlle 
             cmd dans menu cmd du natif du pos
             */
-            console.log("maj test");
             var v = this.env.pos.add_new_order();
             this.env.pos.delete_current_order();
             this.env.pos.set_order(v);  
